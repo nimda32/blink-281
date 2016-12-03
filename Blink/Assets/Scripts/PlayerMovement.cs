@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public int direction = 0; //0-right, 1-left
 	public int speed = 10;
-	private int jumpHeight = 620;
+	private int jumpHeight = 200;
 
 	public Vector3 initialposition;
 

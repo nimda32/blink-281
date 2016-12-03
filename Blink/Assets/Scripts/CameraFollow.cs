@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour {
 	public bool cameraFollowX = true; // camera follows on horizontal
 	public bool cameraFollowY = true; // camera follows on vertical
 	public bool cameraFollowHeight = true; // camera follow CameraTarget object height
-	public float cameraHeight = 50.0f; // height of camera adjustable
+	public float cameraHeight=80; // height of camera adjustable
 	Vector2 velocity = new Vector2(5,5); // speed of camera movement
 	
 	private Transform thisTransform; // camera Transform
