@@ -10,7 +10,7 @@ public class MusicCamera : MonoBehaviour {
 	void Awake(){
 		if (!AudioBegin) {
 			source.Play ();
-			DontDestroyOnLoad (this.gameObject);
+//			DontDestroyOnLoad (this.gameObject);
 			AudioBegin = true;
 		}
 	
