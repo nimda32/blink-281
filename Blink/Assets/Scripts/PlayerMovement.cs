@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
 	public int direction = 0; //0-right, 1-left
 	public int speed = 10;
 	public int jumpHeight = 200;
+	static private int deaths = 0;
+	static private int keys = 0;
 
 	public Vector3 initialposition;
 
@@ -34,6 +37,8 @@ public class PlayerMovement : MonoBehaviour {
 	Vector3 originalPos;
 
 	public GameObject pause;
+	public Text deathCount;
+	public Text keyCount;
 
 	// Use this for initialization
 	void Start () 
@@ -50,6 +55,9 @@ public class PlayerMovement : MonoBehaviour {
 		//			(AudioClip)Resources.Load ("Sounds/chimes.wav"),
 		//			(AudioClip)Resources.Load ("Sounds/boing.wav")
 		//		};
+
+		updateDeaths ();
+		updateKeys ();
 	}
 
 	bool isGrounded()
@@ -173,6 +181,8 @@ public class PlayerMovement : MonoBehaviour {
 			transform.position = initialposition;
 			source.clip = deathSound;
 			source.Play();
+			deaths++;
+			updateDeaths ();
 		}
 	}
 
@@ -183,6 +193,13 @@ public class PlayerMovement : MonoBehaviour {
 			transform.position = initialposition;
 			source.clip = deathSound;
 			source.Play();
+			deaths++;
+			updateDeaths ();
+		}
+
+		if (other.tag == "Key") {
+			keys++;
+			updateKeys ();
 		}
 	}
 
@@ -200,5 +217,13 @@ public class PlayerMovement : MonoBehaviour {
 	public void Quit()
 	{
 		Application.Quit ();
+	}
+
+	public void updateDeaths() {
+		deathCount.text = "Death Count: " + deaths;
+	}
+
+	public void updateKeys() {
+		keyCount.text = "Key Count: " + keys;
 	}
 }
