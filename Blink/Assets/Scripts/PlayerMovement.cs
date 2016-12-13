@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour {
 		animator.SetBool ("walking", false);
 
 		//Left-Right Movement
-		if(Input.GetKey(KeyCode.A)) {
+		if(Input.GetKey(KeyCode.LeftArrow)) {
 			dir += transform.right * Time.deltaTime * -speed;
 			direction = 1;
 			animator.SetBool ("walking", true);
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
 		}
-		else if(Input.GetKey(KeyCode.D)) {
+		else if(Input.GetKey(KeyCode.RightArrow)) {
 			dir += transform.right * Time.deltaTime * speed;
 			direction = 0;
 			animator.SetBool ("walking", true);
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour {
 		dir = new Vector3 (0, 0, 0);
 
 		//Jumping
-		if (Input.GetKeyDown (KeyCode.W)) 
+		if (Input.GetKeyDown (KeyCode.UpArrow)) 
 		{
 			if (isGrounded())
 			{
@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		//Teleporting
-		if (Input.GetKeyDown(KeyCode.LeftShift))
+		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			source.time = 1.2f;
 			source.clip = teleportSound;
